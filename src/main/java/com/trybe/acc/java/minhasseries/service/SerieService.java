@@ -56,13 +56,23 @@ public class SerieService {
         .orElseThrow(() -> new RuntimeException("Value is not present"));
     Episodio episodioAdd =
         new Episodio(
-            serie.getEpisodios().size(),
-            episodio.getNumero(),
-            episodio.getDuracaoEmMinutos(),
-            serie);
+          serie.getEpisodios().size(),
+          episodio.getNumero(),
+          episodio.getDuracaoEmMinutos(),
+          serie);
     serie.adicionarEpisodio(episodioAdd);
     System.out.println(serie.getEpisodios());
     Serie serie2 = serieRepository.save(serie);
     return serie2;
+  }
+
+  /**
+   * Método para exibir os episódios de uma série.
+   */
+
+  public List<Episodio> showEpisodiosbySerie(Integer id) {
+    Serie serie = serieRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Value is not present"));
+    return serie.getEpisodios();
   }
 }

@@ -67,4 +67,14 @@ public class SerieController {
     Serie serie = serieService.addEpisodioAtSerie(id, episodio);
     return ResponseEntity.ok(serie);
   }
+
+  /**
+   * Método para exibir os episódios de uma série.
+   */
+
+  @GetMapping("/{id}/episodios")
+  public ResponseEntity<List<Episodio>> showEpisodiosbySerie(@PathVariable Integer id) {
+    List<Episodio> episodios = serieService.showEpisodiosbySerie(id);
+    return ResponseEntity.ok(episodios);
+  }
 }
