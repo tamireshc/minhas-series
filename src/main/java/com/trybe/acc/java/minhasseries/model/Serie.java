@@ -20,11 +20,10 @@ public class Serie {
   private String nome;
   @Column
   @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, orphanRemoval = true)
-  private List<Episodio> episodios;
+  private List<Episodio> episodios = new ArrayList<>();
 
   public Serie(String nome) {
     this.nome = nome;
-    this.episodios = new ArrayList<>();
   }
 
   public Serie() {

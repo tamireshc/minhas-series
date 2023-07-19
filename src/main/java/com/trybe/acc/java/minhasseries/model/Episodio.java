@@ -18,8 +18,8 @@ public class Episodio {
   @Column
   private int duracaoEmMinutos;
 
-  @ManyToOne
   @JoinColumn(name = "serie_id")
+  @ManyToOne
   private Serie serie;
 
   /**
@@ -39,6 +39,17 @@ public class Episodio {
     this.id = id;
     this.numero = numero;
     this.duracaoEmMinutos = duracaoEmMinutos;
+    this.serie = serie;
+  }
+
+  /**
+   * Método contrutor.
+   */
+
+  public Episodio(int numero, int duracaoEmMinutos, Serie serie) {
+    this.numero = numero;
+    this.duracaoEmMinutos = duracaoEmMinutos;
+    this.serie = serie;
   }
 
   /**
@@ -46,7 +57,7 @@ public class Episodio {
    */
 
   public Episodio() {
- 
+
   }
 
   public Integer getId() {
