@@ -2,6 +2,7 @@ package com.trybe.acc.java.minhasseries.controller;
 
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
+import com.trybe.acc.java.minhasseries.model.SerieRequest;
 import com.trybe.acc.java.minhasseries.service.SerieService;
 
 import java.util.HashMap;
@@ -9,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +34,13 @@ public class SerieController {
    */
 
   @PostMapping
-  public ResponseEntity<Serie> post(@RequestBody Map<String, String> map) {
-    Serie serie = new Serie(map.get("nome"));
-    Serie result = serieService.post(serie);
+  public ResponseEntity post(@RequestBody SerieRequest serieRequest) {
+    //HttpHeaders headers = new HttpHeaders();
+    //headers.setContentType(MediaType.APPLICATION_JSON);
+    //Serie serie = new Serie(map.get("nome"));
+    Serie result = serieService.post(serieRequest);
     return ResponseEntity.ok(result);
+    //return new ResponseEntity<>(result, headers, HttpStatus.OK);
   }
 
   /**

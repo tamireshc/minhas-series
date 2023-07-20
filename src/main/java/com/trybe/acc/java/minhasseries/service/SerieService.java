@@ -5,6 +5,7 @@ import com.trybe.acc.java.minhasseries.exception.SerieExistenteException;
 import com.trybe.acc.java.minhasseries.exception.SerieNaoEncontradaException;
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
+import com.trybe.acc.java.minhasseries.model.SerieRequest;
 import com.trybe.acc.java.minhasseries.repository.SerieRepository;
 
 import java.util.List;
@@ -21,11 +22,12 @@ public class SerieService {
    * Método post.
    */
 
-  public Serie post(Serie serie) {
-    boolean serieExist = serieRepository.existsByNome(serie.getNome());
+  public Serie post(SerieRequest serieRequest) {
+    boolean serieExist = serieRepository.existsByNome(serieRequest.getNome());
     if (serieExist) {
       throw new SerieExistenteException("Série Existente");
     }
+    Serie serie = new Serie(serieRequest.getNome());
     Serie result = serieRepository.save(serie);
     return result;
   }
