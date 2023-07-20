@@ -1,6 +1,6 @@
 # Minhas Séries :movie_camera:
 
-A aplicação minhas séries é uma API REST para gestão de séries vistas por um usuário.
+A aplicação minhas séries é uma API REST para gestão de séries vistas por um usuário.<br>
 O objetivo do projeto é proporcionar uma manéira fácil para controlar as séries assistidas, detalhando o seus avanço a cada episódio.
 
 É possível:
