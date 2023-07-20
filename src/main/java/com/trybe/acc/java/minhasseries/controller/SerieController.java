@@ -4,6 +4,7 @@ import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.service.SerieService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -76,5 +77,17 @@ public class SerieController {
   public ResponseEntity<List<Episodio>> showEpisodiosbySerie(@PathVariable Integer id) {
     List<Episodio> episodios = serieService.showEpisodiosbySerie(id);
     return ResponseEntity.ok(episodios);
+  }
+
+  /**
+   * Método para exibir o tempo gasto vendo séries.
+   */
+
+  @GetMapping("/tempo")
+  public ResponseEntity<Map<String, Integer>> showTimeSpentWatchingSeries() {
+    Map<String, Integer> map = new HashMap<>();
+    int time = serieService.showTimeSpentWatchingSeries();
+    map.put("tempoEmMinutos", time);
+    return ResponseEntity.ok(map);
   }
 }

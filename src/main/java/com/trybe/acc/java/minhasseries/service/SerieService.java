@@ -62,8 +62,8 @@ public class SerieService {
           serie);
     serie.adicionarEpisodio(episodioAdd);
     System.out.println(serie.getEpisodios());
-    Serie serie2 = serieRepository.save(serie);
-    return serie2;
+    Serie serieAdded = serieRepository.save(serie);
+    return serieAdded;
   }
 
   /**
@@ -74,5 +74,20 @@ public class SerieService {
     Serie serie = serieRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Value is not present"));
     return serie.getEpisodios();
+  }
+
+  /**
+   * Método para exibir o tempo gasto vendo séries.
+   */
+
+  public int showTimeSpentWatchingSeries() {
+    List<Serie> series = this.findAll();
+    int time = 0;
+    for (Serie serie : series) {
+      for (Episodio episodio : serie.getEpisodios()) {
+        time += episodio.getDuracaoEmMinutos();
+      }
+    }
+    return time;
   }
 }
