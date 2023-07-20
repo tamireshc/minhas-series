@@ -22,7 +22,7 @@ O objetivo do projeto é proporcionar uma manéira fácil para controlar as sér
 ```
 Clone o repositório:
 git clone git@github.com:tamireshc/minhas-series.git
-cd minhas-series/src
+cd minhas-series
 
 Instale as dependências:
 mvn install
@@ -31,6 +31,8 @@ Rode o projeto
 mvn spring-boot:run
 ```
 ## 🕵 Diagrama UML da API <br>
+
+![Sem Título](https://github.com/tamireshc/minhas-series/assets/65035109/053cc172-1cc8-4240-97c3-be4fb063fe48)
 
 ## 🔎 Documentação da API
 
