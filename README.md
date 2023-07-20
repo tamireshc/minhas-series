@@ -13,7 +13,7 @@ O objetivo do projeto é proporcionar uma manéira fácil para controlar as sér
 
 ## :mag: Tecnologias utilizadas
 - Construção da API - [Java](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html) e
-[Spring Boot](https://spring.io/projects/spring-boot)<br>
+[Spring](https://spring.io/projects/spring-boot)<br>
 - Banco de dados [H2 Database Engine](h2database.com/html/main.html) <br>
  - Mapeamento de erros - [ControllerAdvice](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html) <br>
 
