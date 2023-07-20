@@ -1,16 +1,16 @@
 package com.trybe.acc.java.minhasseries.service;
 
+import com.trybe.acc.java.minhasseries.exception.EpisodioExistenteException;
 import com.trybe.acc.java.minhasseries.exception.SerieExistenteException;
+import com.trybe.acc.java.minhasseries.exception.SerieNaoEncontradaException;
 import com.trybe.acc.java.minhasseries.model.Episodio;
 import com.trybe.acc.java.minhasseries.model.Serie;
 import com.trybe.acc.java.minhasseries.repository.SerieRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class SerieService {
@@ -44,6 +44,8 @@ public class SerieService {
    */
 
   public void delete(Integer id) {
+    Serie serie = serieRepository.findById(id)
+        .orElseThrow(() -> new SerieNaoEncontradaException("Série não encontrada"));
     serieRepository.deleteById(id);
   }
 
@@ -53,7 +55,12 @@ public class SerieService {
 
   public Serie addEpisodioAtSerie(Integer id, Episodio episodio) {
     Serie serie = serieRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Value is not present"));
+        .orElseThrow(() -> new SerieNaoEncontradaException("Série não encontrada"));
+    for (Episodio episodioSerie : serie.getEpisodios()) {
+      if (episodioSerie.getNumero() == episodio.getNumero()) {
+        throw new EpisodioExistenteException("Episódio Existente");
+      }
+    }
     Episodio episodioAdd =
         new Episodio(
           serie.getEpisodios().size(),
@@ -72,7 +79,7 @@ public class SerieService {
 
   public List<Episodio> showEpisodiosbySerie(Integer id) {
     Serie serie = serieRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Value is not present"));
+        .orElseThrow(() -> new SerieNaoEncontradaException("Série não encontrada"));
     return serie.getEpisodios();
   }
 
