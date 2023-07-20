@@ -6,7 +6,7 @@ O objetivo do projeto é proporcionar uma manéira fácil para controlar as sér
 É possível:
 
 - Cadastrar e visualizar as séries que já assisti;
-- Adicionar episódios a séries que já assisti (indicando o número do episódio e o tempo em minutos que ele possui);
+- Adicionar episódios a séries que já assistidas (indicando o número do episódio e o tempo em minutos que ele possui);
 - Remover série com os seus episódios;
 - Visualizar episódios assistidos de uma determinada séries;
 - Visualizar tempo gasto total de todos os episódios já assistidos em todas as séries."
